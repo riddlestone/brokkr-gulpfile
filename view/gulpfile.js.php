@@ -7,10 +7,11 @@ $imagePaths = call_user_func_array('array_merge', array_map(function($portal){
     return !empty($portal['img']) ? $portal['img'] : [];
 }, $portals));
 
-
 ?>
 const {src, dest, parallel} = require("gulp");
-<?php if(!empty($imagePaths) : ?>const image = require("gulp-image");<?php endif; ?>
+<?php if(!empty($imagePaths)) : ?>
+const image = require("gulp-image");
+<?php endif; ?>
 const sass = require("gulp-sass");
 const minifyCSS = require("gulp-csso");
 const concat = require("gulp-concat");
