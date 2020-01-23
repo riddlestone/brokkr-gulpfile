@@ -1,0 +1,6 @@
+/build/
+/composer.lock
+/.idea/
+/node_modules/
+/.phpunit.result.cache
+/vendor/
