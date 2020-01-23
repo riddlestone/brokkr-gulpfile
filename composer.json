@@ -1,8 +1,22 @@
 {
     "name": "riddlestone/zf-gulpfile",
-    "description": "A tool to create gulpfiles based on ZendFramework/Laminas module configuration",
-    "license": [
-        "proprietary"
+    "description": "A tool to create gulpfiles based on ZendFramework module configuration",
+    "license": "BSD-3-Clause",
+    "homepage": "https://github.com/riddlestone/zf-gulpfile",
+    "type": "library",
+    "extra": {
+        "zf": {
+            "component": "Riddlestone\\ZF\\Gulpfile"
+        }
+    },
+    "scripts": {
+        "test": "phpunit"
+    },
+    "authors": [
+        {
+            "name": "Andrew Riddlestone",
+            "email": "andrew.riddlestone@gmail.com"
+        }
     ],
     "autoload": {
         "psr-4": {
