@@ -10,9 +10,8 @@ class GulpfileTest extends TestCase
     public function testGetGulpConfig()
     {
         $command = new Gulpfile();
-        $target = tempnam('/tmp', 'php');
         $command->setConfig([
-            'target' => $target,
+            'target' => '/tmp/test',
             'template' => __DIR__ . '/../../view/gulpfile.js.php',
             'portals' => [
                 'main' => [
