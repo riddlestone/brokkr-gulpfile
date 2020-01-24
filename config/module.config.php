@@ -9,12 +9,12 @@ return [
         ],
     ],
     'gulp' => [
-        'template' => __DIR__ . '/../view/gulpfile-template.php',
+        'template' => __DIR__ . '/../view/gulpfile.js.php',
         'target' => 'gulpfile.js',
         'portals' => [],
     ],
     'npm' => [
-        '' => [
+        'dependencies' => [
             'gulp' => '^4.0.2',
             'gulp-concat' => '^2.6.1',
             'gulp-csso' => '^4.0.1',
