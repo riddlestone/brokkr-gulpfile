@@ -1,6 +1,6 @@
 <?php
 
-namespace Riddlestone\ZF\Gulpfile\Command;
+namespace Riddlestone\Brokkr\Gulpfile\Command;
 
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;

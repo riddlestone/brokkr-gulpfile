@@ -1,9 +1,9 @@
 <?php
 
-namespace Riddlestone\ZF\Gulpfile\Test\Command;
+namespace Riddlestone\Brokkr\Gulpfile\Test\Command;
 
 use PHPUnit\Framework\TestCase;
-use Riddlestone\ZF\Gulpfile\Command\Gulpfile;
+use Riddlestone\Brokkr\Gulpfile\Command\Gulpfile;
 
 class GulpfileTest extends TestCase
 {

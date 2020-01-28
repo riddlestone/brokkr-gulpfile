@@ -1,6 +1,6 @@
 <?php
 
-namespace Riddlestone\ZF\Gulpfile;
+namespace Riddlestone\Brokkr\Gulpfile;
 
 class Module
 {
