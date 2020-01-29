@@ -26,8 +26,9 @@
     "require": {
         "php": "^7.1",
         "ext-json": "*",
-        "riddlestone/brokkr-console": "^1.0.1",
-        "laminas/laminas-servicemanager": "^3.4"
+        "laminas/laminas-component-installer": "^2.0 || ^1.0 || ^0.7",
+        "laminas/laminas-servicemanager": "^3.4",
+        "riddlestone/brokkr-console": "^1.0.1"
     },
     "autoload-dev": {
         "psr-4": {
