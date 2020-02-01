@@ -20,6 +20,7 @@ return [
             'gulp-csso' => '^4.0.1',
             'gulp-image' => '^6.0.0',
             'gulp-sass' => '^4.0.2',
+            'gulp-uglify' => '^3.0.2',
         ],
     ],
     'service_manager' => [

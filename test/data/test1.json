@@ -1,0 +1,18 @@
+{
+    "portals": {
+        "main": {
+            "css": [
+                "foo.scss",
+                "bar/baz.scss"
+            ],
+            "js": [
+                "script.js",
+                "stuff/**/*.js"
+            ],
+            "other": [
+                "foo.png",
+                "bar/**/*.jpg"
+            ]
+        }
+    }
+}
