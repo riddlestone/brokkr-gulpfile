@@ -16,6 +16,11 @@ class Gulpfile extends Command
     protected $config;
 
     /**
+     * @var array
+     */
+    protected $portalConfig;
+
+    /**
      * @param array $config
      */
     public function setConfig(array $config)
@@ -31,6 +36,22 @@ class Gulpfile extends Command
         return $this->config;
     }
 
+    /**
+     * @param array $portalConfig
+     */
+    public function setPortalConfig(array $portalConfig)
+    {
+        $this->portalConfig = $portalConfig;
+    }
+
+    /**
+     * @return array
+     */
+    public function getPortalConfig()
+    {
+        return $this->portalConfig;
+    }
+
     public function getGulpConfig()
     {
         $render = function($template, $portals) {
@@ -38,7 +59,7 @@ class Gulpfile extends Command
             require $template;
             return ob_get_clean();
         };
-        return $render($this->config['template'], $this->config['portals']);
+        return $render($this->config['template'], $this->getPortalConfig());
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)

@@ -11,7 +11,6 @@ return [
     'gulp' => [
         'template' => __DIR__ . '/../view/gulpfile.js.php',
         'target' => 'gulpfile.js',
-        'portals' => [],
     ],
     'npm' => [
         'dependencies' => [
@@ -23,6 +22,7 @@ return [
             'gulp-uglify' => '^3.0.2',
         ],
     ],
+    'portals' => [],
     'service_manager' => [
         'factories' => [
             Command\Gulpfile::class => Command\GulpfileFactory::class,
