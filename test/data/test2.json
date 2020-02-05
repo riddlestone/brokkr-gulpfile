@@ -1,14 +1,12 @@
 {
-    "portals": {
-        "main": {
-            "css": [
-                "foo.scss",
-                "bar/baz.scss"
-            ],
-            "js": [
-                "script.js",
-                "stuff/**/*.js"
-            ]
-        }
+    "main": {
+        "css": [
+            "foo.scss",
+            "bar/baz.scss"
+        ],
+        "js": [
+            "script.js",
+            "stuff/**/*.js"
+        ]
     }
 }

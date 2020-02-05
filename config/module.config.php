@@ -11,7 +11,6 @@ return [
     'gulp' => [
         'template' => __DIR__ . '/../view/gulpfile.js.php',
         'target' => 'gulpfile.js',
-        'portals' => [],
     ],
     'npm' => [
         'dependencies' => [

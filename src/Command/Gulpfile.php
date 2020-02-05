@@ -2,6 +2,7 @@
 
 namespace Riddlestone\Brokkr\Gulpfile\Command;
 
+use Riddlestone\Brokkr\Portals\PortalManager;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -14,6 +15,11 @@ class Gulpfile extends Command
      * @var array
      */
     protected $config;
+
+    /**
+     * @var PortalManager
+     */
+    protected $portalManager;
 
     /**
      * @param array $config
@@ -31,14 +37,50 @@ class Gulpfile extends Command
         return $this->config;
     }
 
+    /**
+     * @param PortalManager $portalManager
+     */
+    public function setPortalManager(PortalManager $portalManager): void
+    {
+        $this->portalManager = $portalManager;
+    }
+
+    /**
+     * @return PortalManager
+     */
+    public function getPortalManager(): PortalManager
+    {
+        return $this->portalManager;
+    }
+
+    protected function getPortalConfig()
+    {
+        $portalConfig = [];
+        foreach($this->getPortalManager()->getPortalNames() as $portalName) {
+            $portalConfig[$portalName] = [];
+            foreach(['css', 'js', 'other'] as $type) {
+                $portalConfig[$portalName][$type] = $this->getPortalManager()->getPortalConfig($portalName, $type);
+            }
+        }
+        return $portalConfig;
+    }
+
+    /**
+     * @return false|string
+     */
     public function getGulpConfig()
     {
+        /**
+         * @param string $template
+         * @param array $portals Used in $template file
+         * @return false|string
+         */
         $render = function($template, $portals) {
             ob_start();
             require $template;
             return ob_get_clean();
         };
-        return $render($this->config['template'], $this->config['portals']);
+        return $render($this->config['template'], $this->getPortalConfig());
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
