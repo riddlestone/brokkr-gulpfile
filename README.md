@@ -18,20 +18,20 @@ To include your js/sass files in the gulpfile, add them in portals to your modul
 ```php
 <?php
 return [
-    'gulp' => [
-        'portals' => [
-            'main' => [
-                'css' => [
-                    realpath(__DIR__ . '/../resources/css/**/*.scss'),
-                ],
-                'js' => [
-                    realpath(__DIR__ . '/../resources/js/**/*.js'),
-                ],
+    'portals' => [
+        'main' => [
+            'css' => [
+                realpath(__DIR__ . '/../resources/css/**/*.scss'),
+            ],
+            'js' => [
+                realpath(__DIR__ . '/../resources/js/**/*.js'),
             ],
         ],
     ],
 ];
 ```
+
+Note: Any other methods which [brokkr-portals](https://github.com/riddlestone/brokkr-portals) uses to provide portal information can also be used to get information to brokkr-gulpfile.
 
 A gulpfile can now be created using the brokkr command `gulpfile`:
 ```sh
@@ -46,6 +46,18 @@ To change the template for your gulpfile, just copy view/gulpfile.js.php somewhe
 return [
     'gulp' => [
         'template' => realpath(__DIR__ . '/../view/gulpfile.js.php'),
+    ],
+];
+```
+
+## Changing the target path
+
+To change the path of the final gulpfile, just add the following to your site/module's config:
+```php
+<?php
+return [
+    'gulp' => [
+        'target' => 'gulpfile2.js',
     ],
 ];
 ```

@@ -1,0 +1,25 @@
+{
+    "main": {
+        "css": [
+            "foo.scss",
+            "bar/baz.scss"
+        ],
+        "js": [
+            "script.js",
+            "stuff/**/*.js"
+        ],
+        "other": [
+            "foo.png",
+            "bar/**/*.jpg"
+        ]
+    },
+    "admin": {
+        "css": [
+            "foo.scss",
+            "bar/admin.scss"
+        ],
+        "js": [
+            "admin.js"
+        ]
+    }
+}

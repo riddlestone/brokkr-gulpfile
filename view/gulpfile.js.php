@@ -38,7 +38,7 @@ exports.<?php echo $portal; ?>_css_watch = function () {
 const <?php echo $portal; ?>_js_src = <?php echo json_encode($paths['js'], JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT); ?>;
 exports.<?php echo $portal; ?>_js = function () {
     return src(<?php echo $portal; ?>_js_src, {sourcemaps: true})
-        .pipe(concat("main.min.js"))
+        .pipe(concat("<?php echo $portal; ?>.min.js"))
         .pipe(uglify())
         .pipe(dest("public/static/js", {sourcemaps: "."}));
 };
