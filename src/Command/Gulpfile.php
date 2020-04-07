@@ -58,7 +58,7 @@ class Gulpfile extends Command
         $portalConfig = [];
         foreach($this->getPortalManager()->getPortalNames() as $portalName) {
             $portalConfig[$portalName] = [];
-            foreach(['css', 'js', 'other'] as $type) {
+            foreach(['css', 'js', 'other', 'sass_options'] as $type) {
                 $portalConfig[$portalName][$type] = $this->getPortalManager()->getPortalConfig($portalName, $type);
             }
         }
