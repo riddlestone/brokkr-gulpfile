@@ -14,14 +14,18 @@ const minifyCSS = require("gulp-csso");
 const concat = require("gulp-concat");
 const uglify = require('gulp-uglify');
 
-<?php foreach($portals as $portal => $paths) : ?>
-<?php if(!empty($paths['css'])) : ?>
+<?php foreach($portals as $portal => $portalConfig) : ?>
+<?php if(!empty($portalConfig['css'])) : ?>
 <?php $types['css'][] = $portal; ?>
-const <?php echo $portal; ?>_css_src = <?php echo json_encode($paths['css'], JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT); ?>;
+const <?php echo $portal; ?>_css_src = <?php echo json_encode($portalConfig['css'], JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT); ?>;
 exports.<?php echo $portal; ?>_css = function () {
     return src(<?php echo $portal; ?>_css_src, {sourcemaps: true})
         .pipe(concat(<?php echo json_encode($portal . '.min.css') ?>))
-        .pipe(sass())
+        .pipe(sass(<?php if($portalConfig['sass_options']) echo str_replace(
+            "\n",
+            "\n        ",
+            json_encode($portalConfig['sass_options'], JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT)
+        ); ?>))
         .pipe(minifyCSS())
         .pipe(dest("public/static/css", {sourcemaps: "."}));
 };
@@ -33,9 +37,9 @@ exports.<?php echo $portal; ?>_css_watch = function () {
 };
 
 <?php endif; ?>
-<?php if(!empty($paths['js'])) : ?>
+<?php if(!empty($portalConfig['js'])) : ?>
 <?php $types['js'][] = $portal; ?>
-const <?php echo $portal; ?>_js_src = <?php echo json_encode($paths['js'], JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT); ?>;
+const <?php echo $portal; ?>_js_src = <?php echo json_encode($portalConfig['js'], JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT); ?>;
 exports.<?php echo $portal; ?>_js = function () {
     return src(<?php echo $portal; ?>_js_src, {sourcemaps: true})
         .pipe(concat("<?php echo $portal; ?>.min.js"))
@@ -50,9 +54,9 @@ exports.<?php echo $portal; ?>_js_watch = function () {
 };
 
 <?php endif; ?>
-<?php if(!empty($paths['other'])) : ?>
+<?php if(!empty($portalConfig['other'])) : ?>
 <?php $types['other'][] = $portal; ?>
-const <?php echo $portal; ?>_other_src = <?php echo json_encode($paths['other'], JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT); ?>;
+const <?php echo $portal; ?>_other_src = <?php echo json_encode($portalConfig['other'], JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT); ?>;
 exports.<?php echo $portal; ?>_other = function () {
     return src(<?php echo $portal; ?>_other_src)
         .pipe(dest("public/static"));
@@ -67,13 +71,13 @@ exports.<?php echo $portal; ?>_other_watch = function () {
 <?php endif; ?>
 exports.<?php echo $portal; ?> = parallel(<?php echo implode(", ", array_map(function ($type) use ($portal) {
     return 'exports.' . $portal . '_' . $type;
-}, array_filter(['css', 'js', 'other'], function ($type) use ($paths) {
-    return !empty($paths[$type]);
+}, array_filter(['css', 'js', 'other'], function ($type) use ($portalConfig) {
+    return !empty($portalConfig[$type]);
 }))); ?>);
 exports.<?php echo $portal; ?>_watch = parallel(<?php echo implode(", ", array_map(function ($type) use ($portal) {
     return 'exports.' . $portal . '_' . $type . '_watch';
-}, array_filter(['css', 'js', 'other'], function ($type) use ($paths) {
-    return !empty($paths[$type]);
+}, array_filter(['css', 'js', 'other'], function ($type) use ($portalConfig) {
+    return !empty($portalConfig[$type]);
 }))); ?>);
 
 <?php endforeach; ?>

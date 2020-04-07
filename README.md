@@ -38,6 +38,27 @@ A gulpfile can now be created using the brokkr command `gulpfile`:
 vendor/bin/brokkr gulpfile
 ```
 
+## Setting SASS options
+
+To set SASS options, include them in the `sass_options` settings for your portal:
+```php
+<?php
+return [
+    'portals' => [
+        'main' => [
+            'css' => [
+                realpath(__DIR__ . '/../resources/css/**/*.scss'),
+            ],
+            'sass_options' => [
+                'includePaths' => [
+                    'vendor/someones/awesome-css-stuff/scss',
+                ],
+            ],
+        ],
+    ],
+];
+```
+
 ## Changing the template
 
 To change the template for your gulpfile, just copy view/gulpfile.js.php somewhere, change it, and add the new path to your module/site's config:
