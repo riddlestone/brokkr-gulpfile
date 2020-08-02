@@ -28,7 +28,7 @@
         "ext-json": "*",
         "laminas/laminas-component-installer": "^2.0 || ^1.0 || ^0.7",
         "laminas/laminas-servicemanager": "^3.4",
-        "riddlestone/brokkr-console": "^1.0.1",
+        "riddlestone/brokkr-console": "*",
         "riddlestone/brokkr-portals": "^2.0 || ^3.0"
     },
     "autoload-dev": {
