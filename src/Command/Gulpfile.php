@@ -86,5 +86,6 @@ class Gulpfile extends Command
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         file_put_contents($this->config['target'], $this->getGulpConfig());
+        return 0;
     }
 }
